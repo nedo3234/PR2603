@@ -61,7 +61,7 @@ Pri starejših vozilih (nad 20 let) število hitro upada, kar je posledica tehni
 
 Analizirali smo tudi najbolj popularne znamke vozil.
 
-**znamke_popularnost.png**
+![Najbolj popularne znamke](slike/naj_znamke.png)
 
 Ugotovili smo, da je Volkswagen najbolj zastopana znamka, sledijo pa Renault in druge evropske znamke. Ta rezultat je pričakovan, saj imajo evropski proizvajalci dolgo tradicijo na tem trgu ter dobro razmerje med ceno in kakovostjo.
 
@@ -83,7 +83,7 @@ Rezultati kažejo, da ni močne linearne korelacije. To pomeni, da sama masa voz
 
 Nato smo primerjali napovedane in dejanske emisije CO₂.
 
-**co2_primerjava.png**
+![CO2 primerjava](slike/co2.png)
 
 Opazili smo določena odstopanja, kar kaže na razliko med laboratorijskimi meritvami in dejanskimi pogoji vožnje. To je znan problem v avtomobilski industriji, kjer standardizirani testi ne odražajo vedno realne uporabe.
 
