@@ -63,7 +63,7 @@ Analizirali smo tudi najbolj popularne znamke vozil.
 
 ![Najbolj popularne znamke](slike/naj_znamke.png)
 
-Ugotovili smo, da je Volkswagen najbolj zastopana znamka, sledijo pa Renault in druge evropske znamke. Ta rezultat je pričakovan, saj imajo evropski proizvajalci dolgo tradicijo na tem trgu ter dobro razmerje med ceno in kakovostjo.
+Ugotovili smo, da je Volkswagen najbolj zastopana znamka, sledijo pa Renault in druge evropske znamke. Ta rezultat je pričakovan, saj imajo evropski proizvajalci dolgo tradicijo na tem trgu.
 
 S pomočjo heatmap analize smo preverili razširjenost znamk po regijah.
 
