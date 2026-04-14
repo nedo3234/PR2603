@@ -59,6 +59,8 @@ def starost_vozila_graf(avtomobili):
 
 
 
+
+
 #rabi izboljšave
 def emisije_gorivo_graf(avtomobili):
     # pretvorba v numeric
@@ -80,6 +82,7 @@ def emisije_gorivo_graf(avtomobili):
     plt.ylabel("CO2")
 
     plt.show()
+
 
 
 
@@ -127,6 +130,8 @@ def masa_moc_graf(avtomobili):
     plt.show()
 
 
+
+
 def naj_obcine_graf(avtomobili):
     top_obcine = avtomobili["C13-Upravna enota uporabnika vozila (opis)"].value_counts().head(10)
 
@@ -138,6 +143,7 @@ def naj_obcine_graf(avtomobili):
     plt.ylabel("Število vozil")
     plt.xticks(rotation=45)
     plt.show()
+
 
 
 from sklearn.model_selection import train_test_split
@@ -204,7 +210,6 @@ def co2_razlike(avtomobili):
     plt.show()
 
 
-
 def trend_registracij(avtomobili):
     avtomobili["datum"] = pd.to_datetime(
         avtomobili["B-Datum prve registracije vozila"],
@@ -233,7 +238,6 @@ def trend_registracij(avtomobili):
 
     plt.show()
 
-    
 
 # Še malo delat na tem, da je bolj lepo in smisleno
 def naj_znamke_modeli(avtomobili):
@@ -332,7 +336,6 @@ def trend_po_regijah(avtomobili):
     plt.show()
 
 
-
 # Ima eden prazen graf, je treba to popraviti
 def trend_ev(avtomobili):
     # --- DOVOLJENE REGIJE ---
@@ -425,3 +428,54 @@ def trend_ev(avtomobili):
 
     plt.show()
 
+def korelacijski_graf(avtomobili):
+    stolpci = ["G-Masa vozila", "P12-Nazivna moc", "V7-CO2", "P11-Delovna prostornina"]
+    df = avtomobili[stolpci].copy()
+
+    for stolpec in stolpci:
+        df[stolpec] = (
+            df[stolpec]
+            .astype(str)
+            .str.replace(",", ".", regex=False)
+        )
+        df[stolpec] = pd.to_numeric(df[stolpec], errors="coerce")
+
+    df = df.dropna()
+    plt.figure()
+    sns.heatmap(df.corr(), annot=True)
+
+    plt.title("Korelacija med lastnostmi vozil")
+    plt.show()
+
+def starost_co2(avtomobili):
+    avtomobili["datum"] = pd.to_datetime(
+        avtomobili["B-Datum prve registracije vozila"],
+        format="%d.%m.%Y",
+        errors="coerce"
+    )
+
+    avtomobili["starost"] = 2026 - avtomobili["datum"].dt.year
+    avtomobili["gorivo"] = avtomobili["P13-Vrsta goriva (opis)"].str.upper()
+
+    avtomobili.loc[
+        avtomobili["P24-Pogonske baterije"].notna() &
+        (avtomobili["P24-Pogonske baterije"].astype(str).str.strip() != ""),
+        "gorivo"
+    ] = "ELEKTRIKA"
+
+    avtomobili["V7-CO2"] = pd.to_numeric(avtomobili["V7-CO2"], errors="coerce")
+
+    df = avtomobili[
+        (avtomobili["V7-CO2"] > 0) |
+        (avtomobili["gorivo"] == "ELEKTRIKA")
+    ]
+
+    df = df.dropna(subset=["starost", "V7-CO2"])
+    df = df[df["V7-CO2"] < 500]
+
+    plt.figure()
+    plt.scatter(df["starost"], df["V7-CO2"], alpha=0.3)
+    plt.title("CO2 emisije glede na starost vozila")
+    plt.xlabel("Starost (leta)")
+    plt.ylabel("CO2 (g/km)")
+    plt.show()
