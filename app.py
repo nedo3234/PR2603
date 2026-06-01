@@ -31,10 +31,6 @@ def load_register():
     return av
 
 @st.cache_data
-def load_data():
-    return joblib.load("data/cars_clean.pkl")
-
-@st.cache_data
 def load_combos(min_count=3):
     files = glob.glob("data/top5/*.json")
     dfs = []
@@ -82,7 +78,6 @@ def load_model():
     meta = pickle.load(open("data/model2_meta.pkl", "rb"))
     return pipe, meta
 
-df           = load_data()
 combos, raw  = load_combos(min_count=3)
 model, cols  = load_model()
 
@@ -325,7 +320,4 @@ else:
                     "brand": "Znamka", "model": "Model", "fuel": "Gorivo",
                     "year": "Leto", "mileage": "Km", "power_kw": "Moc (kW)", "price": "Cena (EUR)"
                 }) \
-                .sort_values("Cena (EUR)") \
-                .reset_index(drop=True)
-            if len(podobna2):
-                st.info("Ni podobnih vozil v bazi za ta filter.")
+                .sort_values("Cena (EUR)")
