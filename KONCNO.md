@@ -34,51 +34,52 @@ V evidenci registriranih avtomobilov do leta 2023 je 1.311.778 vozil, kar pomeni
 
 V evidenci so različno stara vozila, ki so približno normalno porazdeljena — največ avtomobilov je starih 9 let. Opazimo padca pri starosti 16 in 27 let, kar sovpada z gospodarsko krizo (2009–2010) in splošnim upadom prodaje novih vozil v tistem obdobju. Gre za realen pojav v podatkih, ne za manjkajoče vnose.
 
-**starosti_vozil.png**
+![Starost vozil](slike/starosti_vozil.png)
 
 Katera goriva pa Slovenci točijo v svoje avtomobile? Trenutno prevladuje dizel, vendar to se hitro spreminja, kot prikazuje graf trenda.
 
-**dizel_bencin_trenutno.png**
+
+![Dizel vs Bencin](slike/dizel_bencin_trenutno.png)
 
 Graf trenda kaže, da bencin narašča in je v zadnjih letih prehitel dizel po priljubljenosti. Menimo, da to sovpada z rastjo števila mestnega prebivalstva, kjer so bencinski motorji primernejši za krajše razdalje in so pogosto učinkovitejši.
 
-**dizel_bencin_trend.png**
+![Dizel vs Bencin (trend)](slike/dizel_bencin_trend.png)
 
 Ni pa več samo izbira med fosilnimi gorivi — trg električnih vozil je v zadnjih letih močno narastel. Rast se je začela okrog leta 2016 in je strmo naraščala do leta 2022. Ni mogoče zanesljivo sklepati, ali se je rast upočasnila ali še vedno strmo narašča, saj imamo podatke le do 2023.
 
-**rast_ev.png**
+![Rast EV](slike/rast_ev.png)
 
 Električna vozila imajo omejitve glede dosega, zato smo pogledali, kje so najbolj priljubljena. Kot prikazuje graf, je največja rast v večjih mestih — Ljubljana narašča najhitreje, sledi Maribor, manjša mesta pa imajo bistveno manjšo rast.
 
-**rast_ev_po_regijah.png**
+![Rast EV po regijag](slike/rast_ev_po_regijah.png)
 
 Z okoljskega vidika opazimo napredek na dveh frontah: električna vozila prinašajo nižje emisije, hkrati pa tudi novejši avtomobili na fosilna goriva izpuščajo manj CO₂. Analizo smo omejili na vozila, registrirana po letu 2004, ker starejši zapisi v registru pogosto nimajo vpisanih vrednosti CO₂.
 
-**co2_starost.png**
+![CO2 in starost](slike/co2_starost.png)
 
 Preučili smo tudi razmerje med maso in močjo vozila. Vidimo pozitivno korelacijo — večja vozila imajo praviloma močnejše motorje, z največjo gostoto vrednosti med 1000–1500 kg in 80–150 kW.
 
-**masa_moc.png**
+![Masa in moč](slike/masa_moc.png)
 
 Nato smo ugotavljali, kateri modeli in znamke so najbolj priljubljeni, da smo lahko zgradili napovedovalni model. Najbolj priljubljeni so: Renault Clio, Volkswagen Passat (karavan), Volkswagen Golf, Citroën Berlingo, Peugeot 208 in Kia Ceed. Nekateri modeli se pojavijo večkrat, ker smo jih ločevali glede na motor za natančnejšo analizo.
 
-**naj_modeli.png**
+![Najbolj popularni modeli](slike/naj_modeli.png)
 
 Da cena narašča s prostornino motorja, smo ugotovili z analizo za vsak priljubljen model. Tukaj je primer za Volkswagen Golf — cena narašča z velikostjo motorja, kar velja že pri novih avtomobilih, saj jih proizvajalci prodajajo po tej logiki.
 
-**golfi_motorji.png**
+![Motorji golfov](slike/golfi_motorji.png)
 
 Za vsak model smo izvedli korelacijsko analizo numeričnih atributov ter analizo pomembnosti spremenljivk (feature importance) z algoritmom RandomForest. Ugotovili smo, da moč motorja, prostornina in število dodatkov opreme (feature_count) najbolj vplivajo na ceno. Poleg tega imajo avtomobili z avtomatskim menjalnikom praviloma višjo ceno.
 
-**golfi_korelacija.png**
+![Golfi korelacija](slike/golfi_korelacija.png)
 
 S temi ugotovitvami smo določili vhodne spremenljivke za napovedni model. Pri gradnji modela smo ugotovili, da je leto prve registracije prav tako zelo pomemben dejavnik — kupci praviloma preferirajo novejši videz in opremo. Spodnji graf prikazuje vrednosti R² za vsak model posebej.
 
-**trening.png**
+![Primerjava modelov](slike/trening.png)
 
 Graf prikazuje mediano napak za vseh 500 vozil vsakega modela. Model največjo napako dosega pri Berlingotih, kar je verjetno posledica velike raznolikosti izvedenk tega modela in posledično večjega razpona cen. Pri Cliu in Golfu je napaka manjša, ker imajo ti avtomobili bolj homogene karakteristike. Model v povprečju doseže MAE okoli 1.000 EUR pri 5-kratni prečni validaciji, kar je za trg rabljenih vozil zadovoljiv rezultat.
 
-**median_napaka.png**
+![Napaka median](slike/median_napaka.png)
 
 ## Streamlit aplikacija
 
