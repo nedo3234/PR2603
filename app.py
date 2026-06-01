@@ -1,12 +1,19 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import joblib
-import json, glob
+import traceback
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-import main as m
+
+try:
+    import pandas as pd
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import joblib
+    import json, glob
+    import main as m
+except Exception as e:
+    st.error(f"Import napaka: {e}")
+    st.code(traceback.format_exc())
+    st.stop()
 
 
 
