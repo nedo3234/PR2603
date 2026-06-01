@@ -8,6 +8,9 @@ import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 import main as m
 
+if not os.path.exists("data/model2.pkl"):
+    os.system("python train_model.py")
+
 
 st.set_page_config(page_title="Analiza vozil", layout="wide")
 
