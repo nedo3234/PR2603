@@ -34,7 +34,7 @@ V evidenci registriranih avtomobilov do leta 2023 je 1.311.778 vozil, kar pomeni
 
 V evidenci so različno stara vozila, ki so približno normalno porazdeljena — največ avtomobilov je starih 9 let. Opazimo padca pri starosti 16 in 27 let, kar sovpada z gospodarsko krizo (2009–2010) in splošnim upadom prodaje novih vozil v tistem obdobju. Gre za realen pojav v podatkih, ne za manjkajoče vnose.
 
-![Starost vozil](slike/starosti_vozila.png)
+![Starost vozil](slike/starost_vozila.png)
 
 Katera goriva pa Slovenci točijo v svoje avtomobile? Trenutno prevladuje dizel, vendar to se hitro spreminja, kot prikazuje graf trenda.
 
